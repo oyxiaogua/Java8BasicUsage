@@ -29,6 +29,16 @@ public class JavaStreamCollectorsUsageClassTest {
 	private JavaStreamCollectorsUsageClass javaStreamCollectorsUsageClass = new JavaStreamCollectorsUsageClass();
 
 	@Test
+	public void testCollectionsSortSimple(){
+		List<String> wordList=new ArrayList<String>();
+		wordList.add("test_1");
+		wordList.add("test_2_2");
+		wordList.add("test3");
+		Collections.sort(wordList,
+				(s1, s2) -> Integer.compare(s1.length(), s2.length()));
+		wordList.forEach(System.out::println);
+	}
+	@Test
 	public void testCollector() {
 		List<Employee_Bean> empList = getEmpIncludeNullValueList();
 		Collector<Employee_Bean, StringJoiner, String> personNameCollector = Collector.of(() -> new StringJoiner("|"),
